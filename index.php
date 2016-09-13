@@ -37,6 +37,8 @@ $getItemFromDatabase = $databaseHandle->query($getData);
 	<div class="container">
 		<h1 class="main__title">Комментарии</h1>
 		<section class="comments-block">
+			<?
+			if($getItemFromDatabase->rowCount() > 0){?>
 				<?while($getItem = $getItemFromDatabase->fetch()):?>
 					<div class="comment">
 						<div class="comment__header">
@@ -46,6 +48,11 @@ $getItemFromDatabase = $databaseHandle->query($getData);
 						<div class="comment__body"><?=$getItem['comment']?></div>
 					</div>
 				<?endwhile;?>
+			<?}else{?>
+				<div class="comment">
+					<div class="comment__body">Ваш комментарий будет первым</div>
+				</div>
+			<?}?>
 		</section>
 		<section class="comments-bottom">
 			<h3 class="comments-bottom__title">Оставить комментарий</h3>
